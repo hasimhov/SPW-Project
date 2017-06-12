@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 	
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  	<!-- <script src="Signup.js" defer="true"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Signup Form</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.ar.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body >
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+  <img src="spw.png" style="width: 100px; padding-right: 10px;">
+  <h2 style="display: inline-block;margin-top: 15px;">Social-Network</h2>
+
+        </div>
+        <!-- <center> -->
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+            </div>
+        <!-- </center> -->
+    </div>
+</div>
+
+    <form id="signupform" class="container">
+    <!-- <div class="col-lg-4 sm-hidden"></div> -->
+    <div class="col-lg-3 col-sm-2 xs-hidden"></div>
+      <div class=" col-lg-6 col-sm-8 " >
+          <h1>Registration_Form</h1>
+
+          <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Name" onblur="namecheck()" onchange="submit()">
+            <span id="name1" style="color: red"></span>
+          </div>
+          <div class="form-group ">
+            <label>Last Name:</label>
+            <input type="text" class="form-control" id="lname" placeholder="Enter Last Name" onblur="lnamecheck()" onchange="submit()">
+            <span id="lname1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="rollno">Phone No.:</label>
+            <input type="text" class="form-control" id="phoneno" placeholder="Enter Phone no" onblur="phonecheck()" onchange="submit()">
+            <span id="phoneno1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email" onblur="emailcheck()" onchange="submit()">
+            <span id="email1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" id="bdate" placeholder="Birthdate" onblur="bdatecheck()" onchange="submit()">
+
+            <span id="bdate1" style="color: red"></span>
+          </div>
+<!--           <div class="form-group">
+            <label>Select State:</label>
+            <select class="form-control" id="state" onchange="statecheck()">
+              <option value="selectstate">Select state</option>
+              <option value="dramatics">Dramatics</option>
+              <option value="graphicdesign">Graphic Design</option>
+              <option value="graffiti">Graffiti painting</option>
+              <option value="lonewolfquiz">Lone Wolf Quiz</option>
+            </select>
+          </div> -->
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" onblur="pwdcheck()" onchange="submit();">
+            <span id="pwd1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="conpwd">Confirm Password:</label>
+            <input type="password" class="form-control" id="conpwd" placeholder="Enter password" onblur="conpwdcheck()" onchange="submit()">
+            <span id="conpwd1" style="color: red"></span>
+          </div>
+          <div class="form-group"  onmouseover="submit()">
+            <button type="button" class="btn btn-primary" disabled onclick="submit1()" id="submit">Submit</button>
+            <p id="para"></p>
+          </div>
+      </div>
+    </form>  
+     
+  </body>
+  <script type="text/javascript">
+    var a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0,first=0,password;
+var sub=document.getElementById("submit");
+function emailcheck() 
+{
+    var x = document.getElementById("email");
+    var x1=document.getElementById("email1");
+    var atpos = x.value.indexOf("@");
+    var dotpos = x.value.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) 
+    {
+        x1.innerHTML="Invalid Email ID";
+        x.style.borderColor="red";
+        a=0;
+    }
+    else
+    {
+        x1.innerHTML="";
+        x.style.borderColor="green";
+        a=1;   
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;
+    }
+}
+function namecheck() 
+{
+    var x = document.getElementById("name");
+    var x1=document.getElementById("name1");
+    var exp = new RegExp("^[a-zA-Z]{3,}$");
+  var te=exp.test(x.value);
+    if (x.value.length==0) 
+    {
+        x1.innerHTML="Name cannot be empty";
+        x.style.borderColor="red";
+        d=0;
+    }
+    else if (!te) {
+        x1.innerHTML="Give your Real Name";
+        x.style.borderColor="red";
+        d=0;      
+    }
+
+    else
+    {
+        x1.innerHTML="";
+        x.style.borderColor="green";
+        d=1;
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;   
+    }
+}
+function lnamecheck()
+{
+    var x=document.getElementById("lname");
+    var x1=document.getElementById("lname1");
+    var exp = new RegExp("^[a-zA-Z]{3,}$");
+  var te=exp.test(x.value);
+    if(x.value.length==0)
+    {
+        x1.innerHTML="Last name cannot be empty";
+        x.style.borderColor="red";
+        e=0;
+    }
+    else if (!te) {
+        x1.innerHTML="Give your  Real Last Name";
+        x.style.borderColor="red";
+        d=0;      
+    }
+    else
+    {
+        x1.innerHTML="";
+        x.style.borderColor="green";
+        e=1;   
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;
+    }
+}
+function bdatecheck(){
+var d=/^(((19|20)([2468][048]|[13579][26]|0[48])|2000)[/-]02[/-]29|((19|20)[0-9]{2}[/-](0[4678]|1[02])[/-](0[1-9]|[12][0-9]|30)|(19|20)[0-9]{2}[/-](0[1359]|11)[/-](0[1-9]|[12][0-9]|3[01])|(19|20)[0-9]{2}[/-]02[/-](0[1-9]|1[0-9]|2[0-8])))$/;
+  var x=document.getElementById("bdate");
+    var x1=document.getElementById("bdate1");
+    var isnum = d.test(x.value);
+    if(isnum==true&&x.value.length==10)
+    {
+        x.style.borderColor="green";
+        x1.innerHTML="";
+        h=1;
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;
+    }
+    else
+    {
+        x1.innerHTML="Wrong Date";
+        x.style.borderColor="red";
+        h=0;
+    }
+}
+function phonecheck()
+{
+    var x=document.getElementById("phoneno");
+    var x1=document.getElementById("phoneno1");
+    var isnum = /^\d+$/.test(x.value);
+    if(isnum==true&&x.value.length==10)
+    {
+        x.style.borderColor="green";
+        x1.innerHTML="";
+        f=1;
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;
+    }
+    else
+    {
+        x1.innerHTML="Phone no should consist of exactly 10 digits";
+        x.style.borderColor="red";
+        f=0;
+    }
+}
+
+function pwdcheck()
+{
+  var x=document.getElementById("pwd");
+    var x1=document.getElementById("pwd1");
+    password = x.value;
+    //Password should contain atleast one alphabet, atleast one numeric character, atleast one special character and password length should be atleast 6
+    var exp = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
+  var te=exp.test(password);
+    if(te==false) 
+  {
+      x1.innerHTML="Password should contain atleast one number one special character and at least 6 characters";
+        x.style.borderColor="red";
+        b=0;    
+    }
+    else
+    {
+        x1.innerHTML="";
+        x.style.borderColor="green";
+        b=1;
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;   
+    }
+    if(first!=0)
+        conpwdcheck();
+    else
+        first=1;
+}
+
+function conpwdcheck()
+{ var x = document.getElementById("conpwd");
+    var x1=document.getElementById("conpwd1");
+  if(x.value===password&&b==1)
+  {
+        x1.innerHTML="";
+        x.style.borderColor="green";
+        c=1;
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;   
+    }
+    else
+    {
+        x1.innerHTML="Passwords do not match";
+        x.style.borderColor="red";
+        c=0;
+    }
+}
+
+function statecheck()
+{
+      
+
+    var x=document.getElementById("state");
+    var y=x.options[x.selectedIndex].value;
+    if(y=="selectstate")
+    {   
+        x.style.borderColor="red";
+        g=0;
+    }
+    else
+    {
+        g=1;
+        x.style.borderColor="green";
+        if(a==1&&b==1&&c==1&&d==1&&e==1&&f==1&&g==1&&h==1)
+            sub.disabled=false;
+    }
+}
+function submit()
+{   
+    if(a==0||b==0||c==0||d==0||e==0||f==0||g==0||h==0)
+    {
+         sub.disabled=true;
+         emailcheck();
+         namecheck();
+         lnamecheck();
+         phonecheck();
+         pwdcheck();
+         conpwdcheck();
+         statecheck();
+         bdatecheck();
+    }
+}
+function submit1()
+{
+    var form = document.getElementById("signupform");
+    var elements = form.elements;
+    var len = elements.length
+    for (var i = 0; i < len; ++i) 
+    {
+        elements[i].readOnly = true;
+    }
+    document.getElementById("state").disabled=true;
+    sub.disabled=true;
+    alert("Submitted Successfully");
+}
+  </script>
+</html>
