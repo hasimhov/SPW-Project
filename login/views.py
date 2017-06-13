@@ -17,7 +17,7 @@ def loginHandler(request):
 	try:
 		user1 = user.objects.get(emailId=email)
 	except:
-		
+		request.path+='/check1'
 		return render(request,index.html,{})
 	if user1.password!=passwd:
 		return render(request,index1.html,{})
@@ -36,6 +36,9 @@ def check(request):
 	u = User(firstName=firstname,password=password,emailId=emailId,phoneNumber=phoneNum,dob=dob	)
 	u.save()
 	return render(request,'index.html',{'name':firstname})
+
+def check1(request):
+	return render(request,'check1.html',{})
 
 
 
