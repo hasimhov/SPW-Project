@@ -6,14 +6,10 @@ from django.shortcuts import render
 from .models import User
 # Create your views here.
 def signUpHandler(request):
-	firstname = request.POST[first_name]
-	lastname = request.POST[last_name]
-	password = request.POST[password]
-	emailId = request.POST[email]
-	phoneNum = request.POST[phone]
-	u = User(firstname=firstname, lastname =lastname,password=password,emailId=emailId,phoneNumber=phoneNum)
-	u.save()
-	return render(request,'index.html',{})
+	print type(request)
+	request.path+='/check'
+	print request.path
+	return render(request,'Signup.html',{})
 
 def loginHandler(request):
 	email = request.POST['email1']
@@ -21,9 +17,25 @@ def loginHandler(request):
 	try:
 		user1 = user.objects.get(emailId=email)
 	except:
+		
 		return render(request,index.html,{})
 	if user1.password!=passwd:
 		return render(request,index1.html,{})
 def login(request):
-	t=loader.get_template('Signup.html')
+	t=loader.get_template('index.html')
+
 	return HttpResponse(t.render({},request))
+
+def check(request):
+
+	firstname = request.POST['name']
+	dob = request.POST['bdate']
+	password = request.POST['pwd']
+	emailId = request.POST['email']
+	phoneNum = request.POST['phoneno']
+	u = User(firstName=firstname,password=password,emailId=emailId,phoneNumber=phoneNum,dob=dob	)
+	u.save()
+	return render(request,'index.html',{'name':firstname})
+
+
+

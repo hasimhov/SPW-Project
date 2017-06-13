@@ -24,7 +24,7 @@
         </div>
         <!-- <center> -->
             <div class="navbar-collapse collapse" id="navbar-main">
-                <form class="navbar-form navbar-right" role="search" action='../' method='post'>
+                <form class="navbar-form navbar-right" role="search" action='../check1' method='post'>
                     {% csrf_token %}
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Username">
@@ -39,7 +39,7 @@
       </div>
 </div>
 
-    <form action='../' method='post' class="container">
+    <form action='../check/' method='post' class="container">
     {% csrf_token %}
     <!-- <div class="col-lg-4 sm-hidden"></div> -->
     <div class="col-lg-3 col-sm-2 xs-hidden"></div>
@@ -48,28 +48,28 @@
 
           <div class="form-group">
             <label>Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter Name" onblur="namecheck()" onchange="submit()">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" onblur="namecheck()" onchange="submit()">
             <span id="name1" style="color: red"></span>
           </div>
           <div class="form-group">
             <label for="rollno">Phone No.:</label>
-            <input type="text" class="form-control" id="phoneno" placeholder="Enter Phone no" onblur="phonecheck()" onchange="submit()">
+            <input type="text" class="form-control" name="phoneno" id="phoneno" placeholder="Enter Phone no" onblur="phonecheck()" onchange="submit()">
             <span id="phoneno1" style="color: red"></span>
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" class="form-control" id="email" placeholder="Enter email" onblur="emailcheck()" onchange="submit()">
+            <input type="text" class="form-control" name="email" id="email" placeholder="Enter email" onblur="emailcheck()" onchange="submit()">
             <span id="email1" style="color: red"></span>
           </div>
           <div class="form-group">
             <label for="date">Date</label>
-            <input type="text" class="form-control" id="bdate" placeholder="yyyy-mm-dd" onblur="bdatecheck()" onchange="submit()">
+            <input type="text" class="form-control" name="bdate" id="bdate" placeholder="yyyy-mm-dd" onblur="bdatecheck()" onchange="submit()">
 
             <span id="bdate1" style="color: red"></span>
           </div>
           <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" onblur="pwdcheck()" onchange="submit();">
+            <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password" onblur="pwdcheck()" onchange="submit();">
             <span id="pwd1" style="color: red"></span>
           </div>
           <div class="form-group">
@@ -78,7 +78,7 @@
             <span id="conpwd1" style="color: red"></span>
           </div>
           <div class="form-group"  onmouseover="submit()">
-            <button type="button" class="btn btn-primary" disabled onclick="submit1()" id="submit">Submit</button>
+            <button type="submit" class="btn btn-primary" disabled onclick="submit1()" id="submit">Submit</button>
             <p id="para"></p>
           </div>
       </div>
