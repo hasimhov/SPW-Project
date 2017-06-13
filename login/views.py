@@ -18,9 +18,9 @@ def loginHandler(request):
 		user1 = user.objects.get(emailId=email)
 	except:
 		request.path+='/check1'
-		return render(request,index.html,{})
+		return render(request,check1.html,{})
 	if user1.password!=passwd:
-		return render(request,index1.html,{})
+		return render(request,check1.html,{})
 def login(request):
 	t=loader.get_template('index.html')
 
