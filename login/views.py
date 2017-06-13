@@ -12,19 +12,31 @@ def signUpHandler(request):
 	return render(request,'Signup.html',{})
 
 def loginHandler(request):
-	email = request.POST['email1']
-	passwd = request.POST['passwd1']
+	email = request.POST['username']
+	passwd = request.POST['password']
+	#print '\n\n'+email+'\n\n'
+	#print User.objects.get(firstName = "sds" )
 	try:
-		user1 = user.objects.get(emailId=email)
+		print "HI"
+		#print User.objects.get(id = 3)
+		user1 = User.objects.get(emailId=str(email))
+
 	except:
-		request.path+='/check1'
-		return render(request,check1.html,{})
+		print "incorrect username"
+
+		request.path = (request.path).replace("check1/","signup/")
+		print request.path
+		return render(request,"Signup.html",{})
 	if user1.password!=passwd:
-		return render(request,check1.html,{})
+		print "incorrect password"
+		request.path = (request.path).replace("check1/","signup/")
+		return render(request,"Signup.html",{})
+	print " password correct"
+	return render(request,'check1.html',{'name' : email})
 def login(request):
 	t=loader.get_template('index.html')
 
-	return HttpResponse(t.render({},request))
+	return HttpResponse(t.render({'name':email},request))
 
 def check(request):
 

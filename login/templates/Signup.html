@@ -19,15 +19,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-  <img src="spw.png" style="width: 100px; padding-right: 10px;">
+            {% load static %}
+  <img src= '''{% static "spw.png" %}''' style="width: 100px; padding-right: 10px;">
   <h2 style="display: inline-block;margin-top: 15px;">Social-Network</h2>
         </div>
         <!-- <center> -->
             <div class="navbar-collapse collapse" id="navbar-main">
-                <form class="navbar-form navbar-right" role="search" action='../check1' method='post'>
+                <form class="navbar-form navbar-right" role="search" action='../check1/' method='post'>
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" placeholder="Username">
+                        <input type="email" class="form-control" name="username" placeholder="Username">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" name="password" placeholder="Password">
