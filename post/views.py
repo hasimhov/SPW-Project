@@ -5,4 +5,4 @@ from django.shortcuts import render
 from .models import Post,Reply
 # Create your views here.
 def wall(request):
-	return render(request,'hello.html',{'name': request.session['email']})
+	return render(request,'post/hello.html',{'name': request.session['email']})
