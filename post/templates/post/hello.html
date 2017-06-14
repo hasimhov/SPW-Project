@@ -39,6 +39,10 @@ ul.topnav li.right {float: right;}
     border-radius: 5px;
     float: left;
     overflow: hidden;
+background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -82,24 +86,35 @@ ul.topnav li.right {float: right;}
   </a></li>
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
+<div><!--ng-repeat starts-->
 <div class="card col-lg-3 col-sm-4 col-xs-6">
   <img src="img_avatar.png" style="width:100%" alt="InterNet Error" ng-click="comment=false;">
-  <div class="container" >
-    <h4 ng-click="comment=false;"><b>John Doe</b></h4>
-    <p ng-click="comment=false;">Architect - Engineer</p>
+  <div class="container" style="width: 100%;">
+    <h4 ng-click="comment=false;" class="post" ><b>John Doe</b></h4>
+    <!-- Fill with post Details in post class items -->
+    <p ng-click="comment=false;" class="post" >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
     <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
-    <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:30px;bottom: 10px;" ng-hide="reply || comment" ></i>
+    <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
 
     <form >
     <input ng-show="reply" type="text" ng= name="comment">
 
     <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
     </form>
-    <div ng-show="comment">
-    <pre >This is Best Post</pre>
+    <div ng-show="comment">    
+    <p class="replies">This is Best Post <small >- Raja</small></p>
+    <p class="replies">This is Best Post Im ny lige df szdnzjdv    zkjnzxkj cnzkjcnkjcnjj<small >- Raja</small></p>
+    <p class="replies">This is Best Post <small >- Raja</small></p>
+    <p class="replies">This is Best Post <small >- Raja</small></p>
+    <p class="replies">This is Best Post <small >- Raja</small></p>
+    <p class="replies">This is Best Post <small >- Raja</small></p>
+    <p class="replies">This is Best Post <small >- Raja</small></p>
+    <p class="replies">This is Best Post <small >- Raja</small></p>
     </div>
-  </div>
-</div> 
+    </div>
+</div>
+</div> <!--Ng-Repeaat till here-->
+
 </div>
 </body>
 <script>
@@ -109,4 +124,21 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
+<style type="text/css">
+.replies {
+    overflow:visible;
+background: #E0EAFC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+}
+.post{
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+</style>
 </html>
