@@ -1,0 +1,9 @@
+body{
+/*background: #189193;  
+background: -webkit-linear-gradient(to right, #189193, navy);  
+background: linear-gradient(to right, #189193, navy);*/ 
+background-color: navy;
+}
+.sign{
+	color: white;
+}

@@ -70,20 +70,21 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
     <span> Hi! {{name}}</span>
   </a></li>
 
-  <li><a class="active" href="#Wall"> 
+  <li><a  href="#Wall"> 
       <i class="fa fa-bars" aria-hidden="true"></i>
       <span class="hidden-xs"> Wall</span>
   </a></li>
 
-  <li><a href="#Friends">
+  <li><a class="active" href="#Friends">
       <span class="fa fa-user-plus" aria-hidden="true"></span>
       <span class="hidden-xs" > Friends</span>
   </a></li>
+
   <li><a href="#All_Friends">
       <i class="fa fa-users" aria-hidden="true"></i>
       <span class="hidden-xs" >  All Friends</span>
   </a></li>
-  <li class="right"><a href="#Settings">
+    <li class="right"><a href="#Settings">
       <i class="fa fa-cogs" aria-hidden="true"></i>
       <span class="hidden-xs" >  Settings</span>
   </a></li>
@@ -96,24 +97,12 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
     <h4 ng-click="comment=false;" class="post" ><b>John Doe</b></h4>
     <!-- Fill with post Details in post class items -->
     <p ng-click="comment=false;" class="post" >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
-    <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
-    <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
-
     <form >
-    <input ng-show="reply" type="text" ng= name="comment">
-
-    <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
+    <button type="submit" aria-hidden="true">Accept <i class="fa fa-check" aria-hidden="true"></i>
+</button>
+    <button type="submit" aria-hidden="true">Reject <i class="fa fa-times" aria-hidden="true"></i>
+</button>
     </form>
-    <div ng-show="comment">    
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post Im ny lige df szdnzjdv    zkjnzxkj cnzkjcnkjcnjj<small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    </div>
     </div>
 </div>
 </div> <!--Ng-Repeaat till here-->

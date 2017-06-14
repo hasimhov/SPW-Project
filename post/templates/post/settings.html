@@ -70,7 +70,7 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
     <span> Hi! {{name}}</span>
   </a></li>
 
-  <li><a class="active" href="#Wall"> 
+  <li><a  href="#Wall"> 
       <i class="fa fa-bars" aria-hidden="true"></i>
       <span class="hidden-xs"> Wall</span>
   </a></li>
@@ -79,47 +79,65 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
       <span class="fa fa-user-plus" aria-hidden="true"></span>
       <span class="hidden-xs" > Friends</span>
   </a></li>
-  <li><a href="#All_Friends">
+
+  <li><a  href="#All_Friends">
       <i class="fa fa-users" aria-hidden="true"></i>
       <span class="hidden-xs" >  All Friends</span>
   </a></li>
-  <li class="right"><a href="#Settings">
+    <li class="right "><a class="active" href="#Settings">
       <i class="fa fa-cogs" aria-hidden="true"></i>
       <span class="hidden-xs" >  Settings</span>
   </a></li>
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
-<div><!--ng-repeat starts-->
-<div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
-  <img src="img_avatar.png" style="width:100%" alt="InterNet Error" ng-click="comment=false;">
-  <div class="container" style="width: 100%;">
-    <h4 ng-click="comment=false;" class="post" ><b>John Doe</b></h4>
-    <!-- Fill with post Details in post class items -->
-    <p ng-click="comment=false;" class="post" >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
-    <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
-    <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
-
-    <form >
-    <input ng-show="reply" type="text" ng= name="comment">
-
-    <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
-    </form>
-    <div ng-show="comment">    
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post Im ny lige df szdnzjdv    zkjnzxkj cnzkjcnkjcnjj<small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
+  <form action='../check/' method='post' class="sign">
+    {% csrf_token %}
+    <!-- <div class="col-lg-4 sm-hidden"></div> -->
+    <div class="col-lg-3 col-sm-2 xs-hidden">
+    <div style="margin: auto;width: 200px; position: relative; top: 150px;" flex>
     </div>
+      
     </div>
-</div>
-</div> <!--Ng-Repeaat till here-->
+    <div class=" col-lg-6 col-sm-8 " >
+          <h1>User Profile Change</h1>
 
+          <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" onblur="namecheck()" onchange="submit()">
+            <span id="name1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="rollno">Phone No.:</label>
+            <input type="text" class="form-control" name="phoneno" id="phoneno" placeholder="Enter Phone no" onblur="phonecheck()" onchange="submit()">
+            <span id="phoneno1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" name="bdate" id="bdate" placeholder="yyyy-mm-dd" onblur="bdatecheck()" onchange="submit()">
 
-
+            <span id="bdate1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="opwd">Old Password:</label>
+            <input type="password" class="form-control" name="opwd" id="pwd" placeholder="Enter Old password" onblur="opwdcheck()" onchange="submit();">
+            <span id="opwd1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="pwd">New Password:</label>
+            <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password" onblur="pwdcheck()" onchange="submit();">
+            <span id="pwd1" style="color: red"></span>
+          </div>
+          <div class="form-group">
+            <label for="conpwd">Confirm Password:</label>
+            <input type="password" class="form-control" id="conpwd" placeholder="Enter password" onblur="conpwdcheck()" onchange="submit()">
+            <span id="conpwd1" style="color: red"></span>
+          </div>
+          <div class="form-group"  onmouseover="submit()">
+            <button type="submit" class="btn btn-primary" disabled onclick="submit1()" id="submit">Change</button>
+            <p id="para"></p>
+          </div>
+    </div>
+  </form> 
 </div>
 </body>
 <script>
@@ -129,21 +147,4 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
-<style type="text/css">
-.replies {
-    overflow:visible;
-background: #E0EAFC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-}
-.post{
-background: #ECE9E6;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-</style>
 </html>
