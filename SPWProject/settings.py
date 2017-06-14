@@ -32,6 +32,7 @@ STATIC_URL = '/'
 
 INSTALLED_APPS = [
     'login.apps.LoginConfig',
+    'post.apps.PostConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

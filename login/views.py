@@ -2,13 +2,10 @@
 from __future__ import unicode_literals
 from django.template import loader
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import User
 # Create your views here.
 def signUpHandler(request):
-	print type(request)
-	request.path+='/check'
-	print request.path
 	return render(request,'Signup.html',{})
 
 def loginHandler(request):
@@ -22,18 +19,12 @@ def loginHandler(request):
 		user1 = User.objects.get(emailId=str(email))
 
 	except:
-		print "incorrect username"
-
-		request.path = (request.path).replace("check1/","signup/")
-		print request.path
-		return render(request,"Signup.html",{})
+		return redirect("/login/signup")
 	if user1.password!=passwd:
-		print "incorrect password"
-		request.path = (request.path).replace("check1/","signup/")
-		return render(request,"Signup.html",{})
+		return redirect("/login/signup")
 	print " password correct"
-	# request.session['email']=email
-	return render(request,'check1.html',{'name' : email})
+	request.session['email']=email
+	return redirect("/wall/")
 
 def login(request):
 	t=loader.get_template('index.html')
@@ -50,7 +41,12 @@ def check(request):
 	phoneNum = request.POST['phoneno']
 	u = User(firstName=firstname,password=password,emailId=emailId,phoneNumber=phoneNum,dob=dob	)
 	u.save()
-	return render(request,'index.html',{'name':firstname})
+	# del request.session
+	
+	request.session['email']=emailId
+	return redirect("/wall/")
+	# return render(request,'check1.html',{'name' : emailId})
+
 
 def check1(request):
 	return render(request,'check1.html',{})
