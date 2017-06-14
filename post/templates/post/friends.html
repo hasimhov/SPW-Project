@@ -92,11 +92,11 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
 </ul>
 <div><!--ng-repeat starts-->
 <div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
-  <img src="img_avatar.png" style="width:100%" alt="InterNet Error" ng-click="comment=false;">
+  <img src="img_avatar.png" style="width:100%" alt="InterNet Error">
   <div class="container" style="width: 100%;">
-    <h4 ng-click="comment=false;" class="post" ><b>John Doe</b></h4>
+    <h4><b>John Doe</b></h4>
     <!-- Fill with post Details in post class items -->
-    <p ng-click="comment=false;" class="post" >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
+    <p >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
     <form >
     <button type="submit" aria-hidden="true">Accept <i class="fa fa-check" aria-hidden="true"></i>
 </button>
@@ -118,21 +118,5 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
-<style type="text/css">
-.replies {
-    overflow:visible;
-background: #E0EAFC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-}
-.post{
-background: #ECE9E6;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
 </style>
 </html>
