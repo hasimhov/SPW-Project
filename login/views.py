@@ -32,10 +32,13 @@ def loginHandler(request):
 		request.path = (request.path).replace("check1/","signup/")
 		return render(request,"Signup.html",{})
 	print " password correct"
+	# request.session['email']=email
 	return render(request,'check1.html',{'name' : email})
+
 def login(request):
 	t=loader.get_template('index.html')
-
+	email=request.session['email']
+	# email=""
 	return HttpResponse(t.render({'name':email},request))
 
 def check(request):
