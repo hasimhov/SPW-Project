@@ -6,13 +6,19 @@ from .models import Post,Reply,User,Friends
 # Create your views here.
 def wall(request):
 	user = User.objects.get(emailId=str(request.session['email']))
-	posts = user.post_set.all()
 	postsrep = []
-	frreq = user.receiver.filter(friend=False)
-	frnds = user.receiver.filter(friend=True)
-	frnds.append(user.sender.filter(friend=True))
+	frreq = user.receiver.all().filter(friend=False)
+	frnds1 = user.receiver.all().filter(friend=True)
+	frnds2 = user.sender.all().filter(friend=True)
+	frnds = frnds1 | frnds2
+	posts = []	
+	for frnd in frnds1:
+		posts.append(frnd.sender.post_set.all())
+	for frnd in frnds2:
+		posts.append(frnd.receiver.post_set.all())
 	for post in posts:
-		postsrep.append({'post':post,'replies':post.reply_set.all()})
+		for i in range(len(post)):
+			postsrep.append({'post':post[i],'replies':post[i].reply_set.all()})
 	context = {
 		'user':user,
 		'posts':postsrep,
@@ -21,14 +27,19 @@ def wall(request):
 	}
 	return render(request,'post/hello.html',context)
 def post(request):
-	text=request.POST['post']
+	text=request.POST['posts']
 	user = User.objects.get(emailId=str(request.session['email']))
 	u=Post(text=text,user=user)
 	u.save()
 	return redirect('/wall/')
 def reply(request):
-	text = request.POST['reply']
+	text = request.POST['comment']
 	user = User.objects.get(emailId=str(request.session['email']))
+	postid = request.POST['postid']
+	post = Post.objects.get(id=int(postid))
+	u = Reply(text=text, user=user, Repost=post)
+	u.save()
+	return redirect('/wall/') 
 
 	
 

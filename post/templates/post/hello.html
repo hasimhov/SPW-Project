@@ -151,7 +151,8 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 <div class="col-lg-3 col-sm-4 col-xs-12 rightpart" flex>
   <div></div>
   <div class="addpost card" ><div style="margin: auto;width: 50%;color: purple;">NEW POST</div>
-  <form class="form-group" style="padding: 10px;" >
+  <form class="form-group" style="padding: 10px;" action="/wall/posts/" method="post">
+    {% csrf_token %}
     <textarea class="form-control" rows="5" id="comment" name="posts" placeholder="Post Here" ></textarea>
     <input type="file" name="pic" accept="image/*" style="margin-top: 10px;">
     <div style="bottom:20px;">
@@ -229,61 +230,35 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 <div class="col-lg-6 col-sm-8 col-xs-12">
 {% if posts %}
   {% for p in posts %}
-    <div><!--ng-repeat starts-->
-      <div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
-      <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
-      <div class="container" style="width: 100%;">
-      <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
-            <!-- Fill with post Details in post class items -->
-            <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
-            <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
-            <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
+    <!-- Dont change this col xs creates error dont know why -->
+    <div class="col-xs-12"> <!--ng-repeat starts-->
+        <div class="card " style="width: 100%;" ng-controller="myCtrl">
+        <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
+        <div class="container" style="width: 100%;">
+        <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+              <!-- Fill with post Details in post class items -->
+              <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
+              <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
+              <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
 
-            <form >
-            <input ng-show="reply" type="text" ng= name="comment">
-
-            <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
-            </form>
-            {% if p.replies %}
-              <div ng-show="comment">    
-              {% for r in p.replies %}
-                <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
-              {% endfor %}
-              </div>
-            {% endif %}
-        </div>
-    </div>
-  {% endfor %}
-{% endif %}
-<!-- Dont change this col xs creates error dont know why -->
-  <div class="col-xs-12"> <!--ng-repeat starts-->
-    <div class="card " style="width: 100%;" ng-controller="myCtrl">
-    <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
-    <div class="container" style="width: 100%;">
-    <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
-          <!-- Fill with post Details in post class items -->
-          <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
-          <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
-          <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
-
-          <form >
-          <input ng-show="reply" type="text" ng= name="comment">
-
-          <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
-          </form>
-          {% if p.replies %}
-            <div ng-show="comment">    
-            {% for r in p.replies %}
-              <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
-            {% endfor %}
-            </div>
-          {% endif %}
+              <form action='reply/' method='post' >
+              {% csrf_token %}
+              <input ng-show="reply" type="text" ng-name="comment" name="comment">
+              <input value="{{p.post.id}}"" type="hidden" readonly name="postid">
+              <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
+              </form>
+              {% if p.replies %}
+                <div ng-show="comment">    
+                {% for r in p.replies %}
+                  <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
+                {% endfor %}
+                </div>
+              {% endif %}
+          </div>
       </div>
-  </div>
 
-</div> <!--Ng-Repeaat till here-->
+    </div> <!--Ng-Repeaat till here-->
   {% endfor %}
-
 {% endif %}
 </div>
 <div class="col-lg-3 col-sm-4 col-xs-12"></div>
