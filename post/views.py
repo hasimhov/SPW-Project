@@ -60,6 +60,8 @@ def profile(request,emailId):
 	user = User.objects.get(emailId=emailId)
 	posts=user.post_set.all()
 	postsrep=[]
+	cuser = User.objects.get(emailId=str(request.session['email']))
+	name=cuser.firstName
 	email=request.session['email']
 	print "\n\nhi\n\n"
 	for i in range(len(posts)):
@@ -68,7 +70,18 @@ def profile(request,emailId):
 		'user':user,
 		'posts':postsrep,
 		'email':email,
+		'name':name,
 	}
 	return render(request,'post/wall.html',context)
 
-	# return render(request,'/post/wall.html',context)
+def settings(request):
+	user = User.objects.get(emailId=str(request.session['email']))
+	context={
+		'user':user
+	}
+	return render(request,'post/settings.html',context)
+def logout(request):
+	return redirect('/login/signup')
+	#is the url correct
+def checker(request):
+	return redirect('/wall/')

@@ -88,19 +88,22 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   padding: 20px;
 
 }
-/*img
+img
 {
-background-image:url('{% static 'post/images/user.png' %}');
-width:100%;
-}*/
+/*background-image:url('{% static 'post/images/user.png' %}');*/
+max-width:180px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
 </style>
 </head>
 <body>
 <div ng-app="myApp" >
 <ul class="topnav">
-  <li class="right"><a href="#">
+  <li class="right"><a href="/wall/profile/{{email}}">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <span> Hi: {{email}}</span>
+    <span> Hi: {{name}}</span>
   </a></li>
 
   <li><a  href="#Wall"> 
@@ -143,7 +146,7 @@ width:100%;
 <div class="col-lg-6 col-sm-8 col-xs-12">
 {% if posts %}
   {% for p in posts %}
-    <div><!--ng-repeat starts-->
+<div><!--ng-repeat starts-->
 
 <!-- Dont change this col xs creates error dont know why -->
   <div class="col-xs-12"> <!--ng-repeat starts-->
@@ -165,7 +168,7 @@ width:100%;
           {% endif %}
       </div>
   </div>
-
+</div>
 </div> <!--Ng-Repeaat till here-->
   {% endfor %}
 

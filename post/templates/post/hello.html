@@ -91,7 +91,7 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 <div ng-app="myApp" >
 {% load static %}
 <ul class="topnav">
-  <li class="right"><a href="#">
+  <li class="right"><a href="/wall/profile/{{user.emailId}}">
     <i class="fa fa-user" aria-hidden="true"></i>
     <span> Hi! {{user.firstName}}</span>
   </a></li>
@@ -109,7 +109,7 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
       <i class="fa fa-users" aria-hidden="true"></i>
       <span class="hidden-xs" >  All Friends</span>
   </a></li>
-  <li class="right"><a href="#Settings">
+  <li class="right"><a href="/wall/settings/">
       <i class="fa fa-cogs" aria-hidden="true"></i>
       <span class="hidden-xs" >  Settings</span>
   </a></li>
