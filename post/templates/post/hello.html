@@ -151,7 +151,7 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   </a></li>
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
-<div class="col-lg-3 col-sm-4 col-xs-12 rightpart" flex>
+<div class="col-lg-3 col-sm-4 col-xs-12 rightpart" ng-controller="myCtrl" flex>
   <div></div>
   <div class="addpost card" ><div style="margin: auto;width: 50%;color: purple;">NEW POST</div>
   <form class="form-group" style="padding: 10px;" >
@@ -164,69 +164,35 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
     </div>
   </form>
   </div>
-
-<div class="just-padding">
-
-<div class="list-group list-group-root well">
-  
-  <a href="#item-1" class="list-group-item" data-toggle="collapse">
-    <i class="glyphicon glyphicon-chevron-down"></i>My Friends
-  </a>
-  <div class="list-group collapse" id="item-1">
-    <!-- Repeat All His Friends -->
-    <a href="#item-1-1" class="list-group-item" data-toggle="collapse">{{Name}}
-    </a>
-<!--  -->
-  </div>
-  
-  <a href="#item-2" class="list-group-item" data-toggle="collapse">
-    <i class="glyphicon glyphicon-chevron-down"></i>Accept
-  </a>
-  <div class="list-group collapse" id="item-2">
-    
-    <a href="#item-2-1" class="list-group-item" data-toggle="collapse">
-      <i class="glyphicon glyphicon-plus"></i>Item 2.1
-    </a>
-
-    
-    <a href="#item-2-2" class="list-group-item" data-toggle="collapse">
-      <i class="glyphicon glyphicon-plus"></i>Item 2.2
-    </a>
-
-    
-    <a href="#item-2-3" class="list-group-item" data-toggle="collapse">
-      <i class="glyphicon glyphicon-plus"></i>Item 2.3
-    </a>
-
-    
-  </div>
-  
-  
-  <a href="#item-3" class="list-group-item" data-toggle="collapse">
-    <i class="glyphicon glyphicon-chevron-down"></i>Add New
-  </a>
-
-  <div class="list-group collapse" id="item-3">
-  <!-- <input type="text" name="search" placeholder="Search Friends"> -->
-    
-    <a href="#item-3-1" class="list-group-item" data-toggle="collapse">
-      <i class="glyphicon glyphicon-plus"></i>Item 3.1
-    </a>
-
-    <a href="#item-3-2" class="list-group-item" data-toggle="collapse">
-      <i class="glyphicon glyphicon-plus"></i>Item 3.2
-    </a>
-
-    
-    <a href="#item-3-3" class="list-group-item" data-toggle="collapse">
-      <i class="glyphicon glyphicon-plus"></i>Item 3.3
-    </a>
-
-    
-  </div>
-  
+<div class="card" style="width: 100% ;padding: 5px;" >
+  <b  style="width: 100%;">All Friends</b>
+  <button style="float: right;" class="glyphicon glyphicon-chevron-down" ng-click="allfriends=!allfriends"></button>
+<ul class="list-group" ng-show ="allfriends">
+<!-- For Starts -->
+  <li class="list-group-item">jvvj</li>
+  <li class="list-group-item">jvvj</li>
+  <li class="list-group-item">jvvj</li>
+  <!-- For Ends -->
+</ul>
 </div>
-  
+<div class="card" style="width: 100% ;padding: 5px;" >
+  <b  style="width: 100%;">Reqests</b>
+  <button style="float: right;" class="glyphicon glyphicon-chevron-down" ng-click="acceptreq=!acceptreq"></button>
+<ul class="list-group" ng-show ="acceptreq">
+<!-- For Starts -->
+<form> <button class="glyphicon glyphicon-plus"></button>Raja</form>
+  <!-- For Ends -->
+
+  <form> <button class="glyphicon glyphicon-plus"></button>Raja</form>
+</ul>
+</div><div class="card" style="width: 100% ;padding: 5px;" >
+  <b  style="width: 100%;">Add Friends</b>
+  <button style="float: right;" class="glyphicon glyphicon-chevron-down" ng-click="addfriends=!addfriends"></button>
+<ul class="list-group" ng-show ="addfriends">
+<!-- For Starts -->
+<form> <button class="glyphicon glyphicon-plus"></button>Raja</form>
+  <!-- For Ends -->
+</ul>
 </div>
 </div>
 <div class="col-lg-6 col-sm-8 col-xs-12">
