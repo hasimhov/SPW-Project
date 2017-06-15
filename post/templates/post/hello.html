@@ -166,7 +166,7 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 
     <div><!--ng-repeat starts-->
 
-<!-- Dont change this col xs creates error dont know why -->
+      <!-- Dont change this col xs creates error dont know why -->
       <div class="col-xs-12"> <!--ng-repeat starts-->
         <div class="card " style="width: 100%;" ng-controller="myCtrl">
         <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
@@ -192,15 +192,15 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
       </div>
 
     </div> <!--Ng-Repeaat till here-->
+  </div>
+  <!-- <div class="col-lg-3 col-sm-4 col-xs-12">
+        <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h2>Join Shaastra</h2>
+  </div> -->
+
+
+    </div>
   {% endfor %}
 {% endif %}
-</div>
-<div class="col-lg-3 col-sm-4 col-xs-12">
-      <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h2>Join Shaastra</h2>
-</div>
-
-
-</div>
 </body>
 <script>
 var app = angular.module('myApp', []);
