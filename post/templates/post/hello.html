@@ -88,6 +88,39 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   padding: 20px;
 
 }
+.just-padding {
+  padding: 15px;
+}
+
+.list-group.list-group-root {
+  padding: 0;
+  overflow: hidden;
+}
+
+.list-group.list-group-root .list-group {
+  margin-bottom: 0;
+}
+
+.list-group.list-group-root .list-group-item {
+  border-radius: 0;
+  border-width: 1px 0 0 0;
+}
+
+.list-group.list-group-root > .list-group-item:first-child {
+  border-top-width: 0;
+}
+
+.list-group.list-group-root > .list-group > .list-group-item {
+  padding-left: 30px;
+}
+
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+  padding-left: 45px;
+}
+
+.list-group-item .glyphicon {
+  margin-right: 5px;
+}
 </style>
 </head>
 <body>
@@ -124,24 +157,77 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   <form class="form-group" style="padding: 10px;" >
     <textarea class="form-control" rows="5" id="comment" name="posts" placeholder="Post Here" ></textarea>
     <input type="file" name="pic" accept="image/*" style="margin-top: 10px;">
-  <div style="bottom:20px;">
+    <div style="bottom:20px;">
 
-    <button type="submit" name="submit" style="float: right;"><i class="fa fa-arrow-right" aria-hidden="true"></i>
-</button> 
-</div>
+      <button type="submit" name="submit" style="float: right;"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button> 
+    </div>
   </form>
   </div>
-  <div class="friends">
-    <h3>Friend List</h3>
-    <ul>
-      <li>sv</li>
-      <li>sv</li>
-      <li>sv</li>
-      <li>sv</li>
-      <li>sv</li>
-      <li>sv</li>
-    </ul>
+
+<div class="just-padding">
+
+<div class="list-group list-group-root well">
+  
+  <a href="#item-1" class="list-group-item" data-toggle="collapse">
+    <i class="glyphicon glyphicon-chevron-down"></i>My Friends
+  </a>
+  <div class="list-group collapse" id="item-1">
+    <!-- Repeat All His Friends -->
+    <a href="#item-1-1" class="list-group-item" data-toggle="collapse">{{Name}}
+    </a>
+<!--  -->
   </div>
+  
+  <a href="#item-2" class="list-group-item" data-toggle="collapse">
+    <i class="glyphicon glyphicon-chevron-down"></i>Accept
+  </a>
+  <div class="list-group collapse" id="item-2">
+    
+    <a href="#item-2-1" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 2.1
+    </a>
+
+    
+    <a href="#item-2-2" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 2.2
+    </a>
+
+    
+    <a href="#item-2-3" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 2.3
+    </a>
+
+    
+  </div>
+  
+  
+  <a href="#item-3" class="list-group-item" data-toggle="collapse">
+    <i class="glyphicon glyphicon-chevron-down"></i>Add New
+  </a>
+
+  <div class="list-group collapse" id="item-3">
+  <!-- <input type="text" name="search" placeholder="Search Friends"> -->
+    
+    <a href="#item-3-1" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 3.1
+    </a>
+
+    <a href="#item-3-2" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 3.2
+    </a>
+
+    
+    <a href="#item-3-3" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 3.3
+    </a>
+
+    
+  </div>
+  
+</div>
+  
+</div>
 </div>
 <div class="col-lg-6 col-sm-8 col-xs-12">
 {% if posts %}
@@ -189,5 +275,17 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
+<script >
+  $(function() {
+        
+  $('.list-group-item').on('click', function() {
+    $('.glyphicon', this)
+      .toggleClass('glyphicon-chevron-right')
+      .toggleClass('glyphicon-chevron-down');
+  });
 
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </html>
