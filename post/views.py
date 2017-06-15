@@ -39,7 +39,12 @@ def reply(request):
 	post = Post.objects.get(id=int(postid))
 	u = Reply(text=text, user=user, Repost=post)
 	u.save()
-	return redirect('/wall/') 
-
-	
+	return redirect('/wall/')
+def freqapt(request):
+	sender=request.POST['receiver']
+	receiver = User.objects.get(emailId=str(request.session['email']))
+	friend=True
+	u=Friends(sender=sender,receiver=receiver,friend=friend)
+	u.save()
+	return redirect('/wall/')
 
