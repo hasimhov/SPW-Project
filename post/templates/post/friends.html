@@ -91,12 +91,11 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
 <!-- Accepting Requests -->
-<div><!--ng-repeat starts-->
+<!-- <div>
 <div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
   <img src="img_avatar.png" style="width:100%" alt="InterNet Error">
   <div class="container" style="width: 100%;">
     <h4><b>John Doe</b></h4>
-    <!-- Fill with post Details in post class items -->
     <p >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
     <form >
     <button type="submit" aria-hidden="true">Accept <i class="fa fa-check" aria-hidden="true"></i>
@@ -106,24 +105,28 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
     </form>
     </div>
 </div>
-</div> <!--Ng-Repeaat till here-->
-
+</div> --> <!--Ng-Repeaat till here-->
 <!-- For New Friend Requests -->
-<div><!--ng-repeat starts-->
-<div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
-  <img src="img_avatar.png" style="width:100%" alt="InterNet Error">
-  <div class="container" style="width: 100%;">
-    <h4><b>John Doe</b></h4>
-    <!-- Fill with post Details in post class items -->
-    <p >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
-    <form >
-    <button type="submit" aria-hidden="true">Send Request <i class="fa fa-plus" aria-hidden="true"></i>
-</button>
-    </form>
+{% if users %}
+  <div><!--ng-repeat starts-->
+  {% for user in users %}
+    <div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
+      <!-- <img src="img_avatar.png" style="width:100%" alt="InterNet Error"> -->
+      <div class="container" style="width: 100%;">
+        <h4><b>{{user.firstName}}</b></h4>
+        <!-- Fill with post Details in post class items -->
+        <p >Email - {{user.emailId}}</p>
+        <form action='/wall/freq/' method='post'>
+        {% csrf_token %}
+         <button type="submit" aria-hidden="true">Send Request <i class="fa fa-plus" aria-hidden="true"></i>
+         </button>
+         <input type="hidden" readonly value={{user.emailId}} name="email1">        
+        </form>
+        </div>
     </div>
-</div>
-</div>
-
+  {% endfor %}
+  </div>
+{% endif %}
 </div>
 </body>
 <script>

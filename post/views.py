@@ -12,17 +12,23 @@ def wall(request):
 	frnds2 = user.sender.all().filter(friend=True)
 	frnds = frnds1 | frnds2
 	posts = []	
+	actfrnds=[]
 	for frnd in frnds1:
 		posts.append(frnd.sender.post_set.all())
 	for frnd in frnds2:
 		posts.append(frnd.receiver.post_set.all())
+	for frnd in frnds:
+		if frnd.sender.emailId==request.session['email']:
+			actfrnds.append(frnd.receiver)
+		else:
+			actfrnds.append(frnd.sender)
 	for post in posts:
 		for i in range(len(post)):
 			postsrep.append({'post':post[i],'replies':post[i].reply_set.all()})
 	context = {
 		'user':user,
 		'posts':postsrep,
-		'frnds':frnds,
+		'frnds':actfrnds,
 		'frreq':frreq,
 	}
 	return render(request,'post/hello.html',context)
@@ -41,18 +47,39 @@ def reply(request):
 	u.save()
 	return redirect('/wall/')
 def freqapt(request):
-	sender=request.POST['sender']
-	receiver = User.objects.get(emailId=str(request.session['email']))
-	friend=True
-	#U needs to be found First ,me Have to read query
-	#u=Friends(sender=sender,receiver=receiver,friend=friend)
-	#u.save()
+	u=Friends.objects.get(id=request.POST['id'])
+	u.friend=True
+	u.save()
 	return redirect('/wall/')
 def freq(request):
 	sender = User.objects.get(emailId=str(request.session['email']))
-	receiver=request.POST['receiver']
+	receiver=User.objects.get(emailId=str(request.POST['email1']))
 	friend=False
-	#u=Friends(sender=sender,receiver=receiver,friend=friend)
-	#u.save()
-	return redirect('/wall/')
+	u=Friends(sender=sender,receiver=receiver,friend=friend)
+	u.save()
+	return redirect('/wall/allusers')
+def allusers(request):
+	user = User.objects.get(emailId=request.session['email'])
+	users=[]
+	friends = Friends.objects.all()
+	for friend in friends:
+		if friend.sender.emailId==user.emailId or friend.receiver.emailId==user.emailId:
+			if friend.sender.emailId==user.emailId:
+				users.append(friend.receiver)
+			else:
+				users.append(friend.sender)
+	totusers = User.objects.all()
+	print totusers	
+	for us in totusers:
+		if us in users:
+			totusers=totusers.exclude(emailId=us.emailId)
+	totusers=totusers.exclude(emailId=request.session['email'])
+	context={
+		'users':totusers,
+	}
+	return render(request,'post/friends.html',context)
+				
+
+				
+
 
