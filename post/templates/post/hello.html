@@ -178,8 +178,9 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
           <!-- Fill with post Details in post class items -->
           <p ng-click="comment=false;reply=false;" class="post" >{{p.post.text}}</p>
           <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
+          {% if p.replies %}
           <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
-
+          {% endif %}
           <form method='post' action='/wall/reply/'>
           {% csrf_token %}
           <input ng-show="reply" type="text" ng-name="comment" name='comment'>

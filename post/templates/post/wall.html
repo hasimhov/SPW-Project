@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -86,20 +88,19 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   padding: 20px;
 
 }
-img
+/*img
 {
 background-image:url('{% static 'post/images/user.png' %}');
-width:400px;
-}
+width:100%;
+}*/
 </style>
 </head>
 <body>
 <div ng-app="myApp" >
-{% load static %}
 <ul class="topnav">
   <li class="right"><a href="#">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <span> Hi! {{user.firstName}}</span>
+    <span> Hi: {{email}}</span>
   </a></li>
 
   <li><a  href="#Wall"> 
@@ -123,10 +124,18 @@ width:400px;
 </ul>
 <div class="col-lg-3 col-sm-4 col-xs-12 rightpart" ng-controller="myCtrl">
   <div class="card" style="width: 100%;">
-    <!-- <img src="#" class="glypicon glypicon-check"> -->
+    <img src="{% static 'post/images/user.png' %}" style="margin: 20px;margin-bottom: 5px;">
     <div class="container">
-      <h4><b>John Doe</b></h4>
-      <p>Architect -  Engineer</p>
+      <h4><b>{{user.firstName}}</b></h4>
+      <p>
+        <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+      :{{user.dob}}</p>
+      <p>
+      <i class="fa fa-phone" aria-hidden="true"></i>
+      :{{user.phoneNumber}}</p>
+      <p>
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      :{{user.emailId}}</p>
     </div>
   </div>
 </div>
@@ -141,19 +150,12 @@ width:400px;
     <div class="card " style="width: 100%;" ng-controller="myCtrl">
     <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
     <div class="container" style="width: 100%;">
-    <h4 ng-click="comment=false;" class="post" ><a href="'/wall/profile/?='+{{p.post.user.emaolId}}">
-    <b>{{p.post.user.firstName}}</b></a>
-    </h4>
           <!-- Fill with post Details in post class items -->
           <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
-          <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
-          <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
-
-          <form >
-          <input ng-show="reply" type="text" ng= name="comment">
-
-          <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
-          </form>
+          <!-- <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 30px;" ng-click="reply=!reply;"></i> -->
+          {% if p.replies %}
+          <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 10px;" ng-hide="reply || comment" ></i>
+          {% endif %}
           {% if p.replies %}
             <div ng-show="comment">    
             {% for r in p.replies %}
