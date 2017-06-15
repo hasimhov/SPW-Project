@@ -14,3 +14,7 @@ class User(models.Model):
 	phoneNumber = models.CharField(max_length=10)
 	def __str__(self):
 		return str(self.emailId)
+class Friends(models.Model):
+	sender = models.ForeignKey(User,related_name='sender')
+	receiver = models.ForeignKey(User,related_name='receiver')
+	friend = models.BooleanField(default = False)
