@@ -43,6 +43,7 @@ ul.topnav li.right {float: right;}
     border-radius: 5px;
     float: left;
     overflow: hidden;
+    width: 100%;
 background: #C9D6FF;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -85,6 +86,11 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   padding: 20px;
 
 }
+img
+{
+background-image:url('{% static 'post/images/user.png' %}');
+width:400px;
+}
 </style>
 </head>
 <body>
@@ -96,14 +102,14 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
     <span> Hi! {{user.firstName}}</span>
   </a></li>
 
-  <li><a class="active" href="#Wall"> 
+  <li><a  href="#Wall"> 
       <i class="fa fa-bars" aria-hidden="true"></i>
       <span class="hidden-xs"> Wall</span>
   </a></li>
 
-  <li><a href="#Friends">
+  <li><a class="active" href="#MyPost">
       <span class="fa fa-user-plus" aria-hidden="true"></span>
-      <span class="hidden-xs" > Friends</span>
+      <span class="hidden-xs" > MyPost</span>
   </a></li>
   <li><a href="#All_Friends">
       <i class="fa fa-users" aria-hidden="true"></i>
@@ -115,63 +121,27 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   </a></li>
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
-<div class="col-lg-3 col-sm-4 col-xs-12 rightpart" ng-controller="myCtrl" flex>
-  <div></div>
-  <div class="addpost card" ><div style="margin: auto;width: 50%;color: purple;">NEW POST</div>
-  <form class="form-group" style="padding: 10px;" action="/wall/posts/" method="post">
-    {% csrf_token %}
-    <textarea class="form-control" rows="5" id="comment" name="posts" placeholder="Post Here" ></textarea>
-    <input type="file" name="pic" accept="image/*" style="margin-top: 10px;">
-    <div style="bottom:20px;">
-
-      <button type="submit" name="submit" style="float: right;"><i class="fa fa-arrow-right" aria-hidden="true"></i>
-      </button> 
+<div class="col-lg-3 col-sm-4 col-xs-12 rightpart" ng-controller="myCtrl">
+  <div class="card" style="width: 100%;">
+    <!-- <img src="#" class="glypicon glypicon-check"> -->
+    <div class="container">
+      <h4><b>John Doe</b></h4>
+      <p>Architect -  Engineer</p>
     </div>
-  </form>
   </div>
-<div class="card" style="width: 100% ;padding: 5px;" >
-  <b  style="width: 100%;">All Friends</b>
-  <button style="float: right;" class="glyphicon glyphicon-chevron-down" ng-click="allfriends=!allfriends"></button>
-<ul class="list-group" ng-show ="allfriends">
-<!-- For Starts -->
-  <li class="list-group-item">jvvj</li>
-  <li class="list-group-item">jvvj</li>
-  <li class="list-group-item">jvvj</li>
-  <!-- For Ends -->
-</ul>
 </div>
-<div class="card" style="width: 100% ;padding: 5px;" >
-  <b  style="width: 100%;">Reqests</b>
-  <button style="float: right;" class="glyphicon glyphicon-chevron-down" ng-click="acceptreq=!acceptreq"></button>
-<ul class="list-group" ng-show ="acceptreq">
-<!-- For Starts -->
-<form> <button class="glyphicon glyphicon-plus"></button>Raja</form>
-  <!-- For Ends -->
 
-  <form> <button class="glyphicon glyphicon-plus"></button>Raja</form>
-</ul>
-</div><div class="card" style="width: 100% ;padding: 5px;" >
-  <b  style="width: 100%;">Add Friends</b>
-  <button style="float: right;" class="glyphicon glyphicon-chevron-down" ng-click="addfriends=!addfriends"></button>
-<ul class="list-group" ng-show ="addfriends">
-<!-- For Starts -->
-<form> <button class="glyphicon glyphicon-plus"></button>Raja</form>
-  <!-- For Ends -->
-</ul>
-</div>
-</div>
 <div class="col-lg-6 col-sm-8 col-xs-12">
 {% if posts %}
   {% for p in posts %}
-
     <div><!--ng-repeat starts-->
 
 <!-- Dont change this col xs creates error dont know why -->
-      <div class="col-xs-12"> <!--ng-repeat starts-->
-        <div class="card " style="width: 100%;" ng-controller="myCtrl">
-        <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
-        <div class="container" style="width: 100%;">
-        <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+  <div class="col-xs-12"> <!--ng-repeat starts-->
+    <div class="card " style="width: 100%;" ng-controller="myCtrl">
+    <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
+    <div class="container" style="width: 100%;">
+    <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
           <!-- Fill with post Details in post class items -->
           <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
           <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
@@ -190,14 +160,14 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
             </div>
           {% endif %}
       </div>
+  </div>
 
-    </div> <!--Ng-Repeaat till here-->
+</div> <!--Ng-Repeaat till here-->
   {% endfor %}
+
 {% endif %}
 </div>
-<div class="col-lg-3 col-sm-4 col-xs-12">
-      <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h2>Join Shaastra</h2>
-</div>
+<div class="col-lg-3 col-sm-4 col-xs-12"></div>
 
 
 </div>
@@ -209,7 +179,7 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
+
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- -->
- </html>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+</html>
