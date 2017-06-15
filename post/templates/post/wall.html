@@ -141,7 +141,9 @@ width:400px;
     <div class="card " style="width: 100%;" ng-controller="myCtrl">
     <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
     <div class="container" style="width: 100%;">
-    <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+    <h4 ng-click="comment=false;" class="post" ><a href="'/wall/profile/?='+{{p.post.user.emaolId}}">
+    <b>{{p.post.user.firstName}}</b></a>
+    </h4>
           <!-- Fill with post Details in post class items -->
           <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
           <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>

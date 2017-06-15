@@ -171,9 +171,12 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
         <div class="card " style="width: 100%;" ng-controller="myCtrl">
         <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
         <div class="container" style="width: 100%;">
-        <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+        <h4 ng-click="comment=false;reply=false;" class="post" >
+        <a href="/wall/profile/{{p.post.user.emailId}}">
+          <b>{{p.post.user.firstName}}</b></a>
+        </h4>
           <!-- Fill with post Details in post class items -->
-          <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
+          <p ng-click="comment=false;reply=false;" class="post" >{{p.post.text}}</p>
           <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
           <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
 
@@ -200,7 +203,19 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 
 </div>
   <div class="col-lg-3 col-sm-4 col-xs-12">
-        <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h2>Join Shaastra</h2>
+  <h1>ADS</h1>
+  <div class="card" >
+        <img src="{% static 'post/images/spw.jpg' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h3>Join SPW 2018</h3>
+  </div>
+  <div class="card" >
+        <img src="{% static 'post/images/iit.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h3>IIT NIRF-1</h3>
+  </div>
+  <div class="card" >
+        <img src="{% static 'post/images/shaastra.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h3>Join Shaastra Events</h3>
+  </div>   
+  <div class="card" >
+        <img src="{% static 'post/images/saarang.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h3>Join Saarang Events</h3>
+  </div>
   </div>
 </div>
 </body>

@@ -56,3 +56,14 @@ def freq(request):
 	#u.save()
 	return redirect('/wall/')
 
+def profile(request,emailId):
+	user = User.objects.get(emailId=emailId)
+	posts=user.post_set.all()
+	postsrep=[]
+	for i in range(len(posts)):
+			postsrep.append({'post':posts[i],'replies':posts[i].reply_set.all()})
+	context = {
+		'user':user,
+		'posts':postsrep,
+	}
+	return render(request,'/post/wall.html',context)
