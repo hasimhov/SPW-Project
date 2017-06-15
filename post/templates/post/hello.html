@@ -79,6 +79,7 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 
 }
 .addpost{
+  width: 100%;
 }
 .rightpart{
   /*height: : 600px;*/
@@ -118,12 +119,28 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
 <div class="col-lg-3 col-sm-4 col-xs-12 rightpart" flex>
-  <div class="addpost">
-  <form>
-    <input type="text" name="post">
-    <input type="file" name="pic" accept="image/*">
-    <input type="submit" name="submit">
+  <div></div>
+  <div class="addpost card" ><div style="margin: auto;width: 50%;color: purple;">NEW POST</div>
+  <form class="form-group" style="padding: 10px;" >
+    <textarea class="form-control" rows="5" id="comment" name="posts" placeholder="Post Here" ></textarea>
+    <input type="file" name="pic" accept="image/*" style="margin-top: 10px;">
+  <div style="bottom:20px;">
+
+    <button type="submit" name="submit" style="float: right;"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+</button> 
+</div>
   </form>
+  </div>
+  <div class="friends">
+    <h3>Friend List</h3>
+    <ul>
+      <li>sv</li>
+      <li>sv</li>
+      <li>sv</li>
+      <li>sv</li>
+      <li>sv</li>
+      <li>sv</li>
+    </ul>
   </div>
 </div>
 <div class="col-lg-6 col-sm-8 col-xs-12">
