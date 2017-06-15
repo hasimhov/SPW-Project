@@ -28,9 +28,9 @@ def loginHandler(request):
 
 def login(request):
 	t=loader.get_template('index.html')
-	email=request.session['email']
+	# email=request.session['email']
 	# email=""
-	return HttpResponse(t.render({'name':email},request))
+	return HttpResponse(t.render({},request))
 
 def check(request):
 

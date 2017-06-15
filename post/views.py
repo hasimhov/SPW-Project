@@ -91,7 +91,6 @@ def profile(request,emailId):
 	cuser = User.objects.get(emailId=str(request.session['email']))
 	name=cuser.firstName
 	email=request.session['email']
-	print "\n\nhi\n\n"
 	for i in range(len(posts)):
 			postsrep.append({'post':posts[i],'replies':posts[i].reply_set.all()})
 	context = {
