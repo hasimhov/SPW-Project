@@ -177,9 +177,10 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
           <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
           <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
 
-          <form >
-          <input ng-show="reply" type="text" ng= name="comment">
-
+          <form method='post' action='/wall/reply/'>
+          {% csrf_token %}
+          <input ng-show="reply" type="text" ng-name="comment" name='comment'>
+          <input type="hidden" value="{{p.post.id}}" readonly name='postid'>
           <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
           </form>
           {% if p.replies %}
@@ -193,14 +194,18 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 
     </div> <!--Ng-Repeaat till here-->
   </div>
-  <!-- <div class="col-lg-3 col-sm-4 col-xs-12">
-        <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h2>Join Shaastra</h2>
-  </div> -->
+  
 
 
     </div>
   {% endfor %}
 {% endif %}
+
+</div>
+</div>
+<div class="col-lg-3 col-sm-4 col-xs-12">
+        <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"><h2>Join Shaastra</h2>
+  </div>
 </body>
 <script>
 var app = angular.module('myApp', []);
