@@ -67,7 +67,7 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
 <ul class="topnav">
   <li class="right"><a href="#">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <span> Hi! {{name}}</span>
+    <span> Hi! {{user.firstName}}</span>
   </a></li>
 
   <li><a class="active" href="#Wall"> 
@@ -93,28 +93,29 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
 <div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
   <img src="img_avatar.png" style="width:100%" alt="InterNet Error" ng-click="comment=false;">
   <div class="container" style="width: 100%;">
-    <h4 ng-click="comment=false;" class="post" ><b>John Doe</b></h4>
-    <!-- Fill with post Details in post class items -->
-    <p ng-click="comment=false;" class="post" >Architect - Engineer dfvdsfv  sdgbDF Xdbh  fdhb dxbdx f bx b dfzv sfgx fbx dzgcb fxhb</p>
-    <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
-    <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
+    {% if posts %}
+      {% for p in posts %}
+        <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+        <!-- Fill with post Details in post class items -->
+        <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
+        <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
+        <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
 
-    <form >
-    <input ng-show="reply" type="text" ng= name="comment">
+        <form >
+        <input ng-show="reply" type="text" ng= name="comment">
 
-    <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
-    </form>
-    <div ng-show="comment">    
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post Im ny lige df szdnzjdv    zkjnzxkj cnzkjcnkjcnjj<small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    <p class="replies">This is Best Post <small >- Raja</small></p>
-    </div>
-    </div>
+        <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
+        </form>
+        {% if p.replies %}
+          <div ng-show="comment">    
+          {% for r in p.replies %}
+            <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
+          {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
 </div>
 </div> <!--Ng-Repeaat till here-->
 
