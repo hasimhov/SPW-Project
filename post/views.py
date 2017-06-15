@@ -75,6 +75,7 @@ def allusers(request):
 			totusers=totusers.exclude(emailId=us.emailId)
 	totusers=totusers.exclude(emailId=request.session['email'])
 	context={
+		'user':user,
 		'users':totusers,
 	}
 	return render(request,'post/friends.html',context)
@@ -108,7 +109,21 @@ def settings(request):
 	}
 	return render(request,'post/settings.html',context)
 def logout(request):
+	del request.session['email']
 	return redirect('/login/signup')
 	#is the url correct
 def checker(request):
-	return redirect('/wall/')
+	user = User.objects.get(emailId=str(request.session['email']))
+	firstname = request.POST['name']
+	password = request.POST['pwd']
+	opassword = request.POST['opwd']
+	phoneNum = request.POST['phoneno']
+	if opassword==user.password:
+		user.firstName=firstname
+		if len(password)>0:
+			user.password=password
+		user.phoneNumber=phoneNum
+		user.save()
+		return redirect('/wall/')
+	else:
+		return render(request,'post/error.html')
