@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <style type="text/css">
-body {margin: 0;}
+body {margin: 0;
+  background: #AAFFA9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #11FFBD, #AAFFA9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #11FFBD, #AAFFA9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 ul.topnav {
     list-style-type: none;
@@ -71,6 +75,49 @@ background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-
 background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
+.addpost{
+  width: 100%;
+}
+.rightpart{
+  /*height: : 600px;*/
+  min-height: 200px;
+  max-height: 1000px;
+  padding: 20px;
+
+}
+.just-padding {
+  padding: 15px;
+}
+
+.list-group.list-group-root {
+  padding: 0;
+  overflow: hidden;
+}
+
+.list-group.list-group-root .list-group {
+  margin-bottom: 0;
+}
+
+.list-group.list-group-root .list-group-item {
+  border-radius: 0;
+  border-width: 1px 0 0 0;
+}
+
+.list-group.list-group-root > .list-group-item:first-child {
+  border-top-width: 0;
+}
+
+.list-group.list-group-root > .list-group > .list-group-item {
+  padding-left: 30px;
+}
+
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+  padding-left: 45px;
+}
+
+.list-group-item .glyphicon {
+  margin-right: 5px;
+}
 </style>
 </head>
 <body>
@@ -101,6 +148,85 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   </a></li>
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
+<div class="col-lg-3 col-sm-4 col-xs-12 rightpart" flex>
+  <div></div>
+  <div class="addpost card" ><div style="margin: auto;width: 50%;color: purple;">NEW POST</div>
+  <form class="form-group" style="padding: 10px;" >
+    <textarea class="form-control" rows="5" id="comment" name="posts" placeholder="Post Here" ></textarea>
+    <input type="file" name="pic" accept="image/*" style="margin-top: 10px;">
+    <div style="bottom:20px;">
+
+      <button type="submit" name="submit" style="float: right;"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button> 
+    </div>
+  </form>
+  </div>
+
+<div class="just-padding">
+
+<div class="list-group list-group-root well">
+  
+  <a href="#item-1" class="list-group-item" data-toggle="collapse">
+    <i class="glyphicon glyphicon-chevron-down"></i>My Friends
+  </a>
+  <div class="list-group collapse" id="item-1">
+    <!-- Repeat All His Friends -->
+    <a href="#item-1-1" class="list-group-item" data-toggle="collapse">{{Name}}
+    </a>
+<!--  -->
+  </div>
+  
+  <a href="#item-2" class="list-group-item" data-toggle="collapse">
+    <i class="glyphicon glyphicon-chevron-down"></i>Accept
+  </a>
+  <div class="list-group collapse" id="item-2">
+    
+    <a href="#item-2-1" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 2.1
+    </a>
+
+    
+    <a href="#item-2-2" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 2.2
+    </a>
+
+    
+    <a href="#item-2-3" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 2.3
+    </a>
+
+    
+  </div>
+  
+  
+  <a href="#item-3" class="list-group-item" data-toggle="collapse">
+    <i class="glyphicon glyphicon-chevron-down"></i>Add New
+  </a>
+
+  <div class="list-group collapse" id="item-3">
+  <!-- <input type="text" name="search" placeholder="Search Friends"> -->
+    
+    <a href="#item-3-1" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 3.1
+    </a>
+
+    <a href="#item-3-2" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 3.2
+    </a>
+
+    
+    <a href="#item-3-3" class="list-group-item" data-toggle="collapse">
+      <i class="glyphicon glyphicon-plus"></i>Item 3.3
+    </a>
+
+    
+  </div>
+  
+</div>
+  
+</div>
+</div>
+<div class="col-lg-6 col-sm-8 col-xs-12">
 {% if posts %}
   {% for p in posts %}
     <div><!--ng-repeat starts-->
@@ -129,9 +255,38 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
     </div>
   {% endfor %}
 {% endif %}
+<!-- Dont change this col xs creates error dont know why -->
+  <div class="col-xs-12"> <!--ng-repeat starts-->
+    <div class="card " style="width: 100%;" ng-controller="myCtrl">
+    <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
+    <div class="container" style="width: 100%;">
+    <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+          <!-- Fill with post Details in post class items -->
+          <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
+          <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 10px;" ng-click="reply=!reply;"></i>
+          <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:8px;bottom: 30px;" ng-hide="reply || comment" ></i>
+
+          <form >
+          <input ng-show="reply" type="text" ng= name="comment">
+
+          <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
+          </form>
+          {% if p.replies %}
+            <div ng-show="comment">    
+            {% for r in p.replies %}
+              <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
+            {% endfor %}
+            </div>
+          {% endif %}
+      </div>
+  </div>
 
 </div> <!--Ng-Repeaat till here-->
+  {% endfor %}
 
+{% endif %}
+</div>
+<div class="col-lg-3 col-sm-4 col-xs-12"></div>
 
 
 </div>
@@ -143,5 +298,17 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
+<script >
+  $(function() {
+        
+  $('.list-group-item').on('click', function() {
+    $('.glyphicon', this)
+      .toggleClass('glyphicon-chevron-right')
+      .toggleClass('glyphicon-chevron-down');
+  });
 
+});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </html>
