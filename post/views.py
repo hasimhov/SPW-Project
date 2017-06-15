@@ -83,3 +83,19 @@ def allusers(request):
 				
 
 
+def profile(request,emailId):
+	user = User.objects.get(emailId=emailId)
+	posts=user.post_set.all()
+	postsrep=[]
+	email=request.session['email']
+	print "\n\nhi\n\n"
+	for i in range(len(posts)):
+			postsrep.append({'post':posts[i],'replies':posts[i].reply_set.all()})
+	context = {
+		'user':user,
+		'posts':postsrep,
+		'email':email,
+	}
+	return render(request,'post/wall.html',context)
+
+	# return render(request,'/post/wall.html',context)

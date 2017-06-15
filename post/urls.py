@@ -7,5 +7,6 @@ urlpatterns = [
 	url(r'^freqapt/$',views.freqapt, name='freqapt'),
 	url(r'^freq/$',views.freq, name='freq'),
 	url(r'^allusers/$',views.allusers, name='allusers'),
+    url(r'^profile/(?P<emailId>[\w._%+-]+@[\w.-]+\.[\w]{2,6})$', views.profile, name='profile'),
 
 	]
