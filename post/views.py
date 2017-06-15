@@ -14,4 +14,4 @@ def wall(request):
 		'user':user,
 		'posts':postsrep
 	}
-	return render(request,'hello.html',context)
+	return render(request,'post/hello.html',context)

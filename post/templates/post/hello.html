@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<style>
+<style type="text/css">
 body {margin: 0;}
 
 ul.topnav {
@@ -59,11 +59,26 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
     ul.topnav li.right, 
     ul.topnav li {float: none;}
 }*/
+.replies {
+    overflow:visible;
+background: #E0EAFC;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+}
+.post{
+background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
 </style>
 </head>
 <body>
 <div ng-app="myApp" >
-
+{% load static %}
 <ul class="topnav">
   <li class="right"><a href="#">
     <i class="fa fa-user" aria-hidden="true"></i>
@@ -89,34 +104,35 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
   </a></li>
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
-<div><!--ng-repeat starts-->
-<div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
-  <img src="img_avatar.png" style="width:100%" alt="InterNet Error" ng-click="comment=false;">
-  <div class="container" style="width: 100%;">
-    {% if posts %}
-      {% for p in posts %}
-        <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
-        <!-- Fill with post Details in post class items -->
-        <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
-        <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
-        <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
+{% if posts %}
+  <div><!--ng-repeat starts-->
+  {% for p in posts %}
+    <div class="card col-lg-3 col-sm-4 col-xs-6" ng-controller="myCtrl">
+    <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
+    <div class="container" style="width: 100%;">
+    <h4 ng-click="comment=false;" class="post" ><b>{{p.post.user.firstName}}</b></h4>
+          <!-- Fill with post Details in post class items -->
+          <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
+          <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:10px;bottom: 10px;" ng-click="reply=!reply;"></i>
+          <i class="fa fa-hand-o-down" aria-hidden="true" ng-click="comment=!comment" style="position: absolute; right:10px;bottom: 30px;" ng-hide="reply || comment" ></i>
 
-        <form >
-        <input ng-show="reply" type="text" ng= name="comment">
+          <form >
+          <input ng-show="reply" type="text" ng= name="comment">
 
-        <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
-        </form>
-        {% if p.replies %}
-          <div ng-show="comment">    
-          {% for r in p.replies %}
-            <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
-          {% endfor %}
-          </div>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
+          <button ng-show="reply" class="fa fa-chevron-circle-right" type="submit" aria-hidden="true" ng-click="reply=!reply;"></button>
+          </form>
+          {% if p.replies %}
+            <div ng-show="comment">    
+            {% for r in p.replies %}
+              <p class="replies">{{r.text}} <small >- {{r.user.firstName}}</small></p>
+            {% endfor %}
+            </div>
+          {% endif %}
+      </div>
+  {% endfor %}
   </div>
-</div>
+{% endif %}
+
 </div> <!--Ng-Repeaat till here-->
 
 
@@ -130,21 +146,5 @@ app.controller('myCtrl', function($scope) {
 });
 
 </script>
-<style type="text/css">
-.replies {
-    overflow:visible;
-background: #E0EAFC;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
-
-}
-.post{
-background: #ECE9E6;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-</style>
 </html>
