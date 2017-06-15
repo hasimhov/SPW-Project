@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from login.models import User
+from login.models import User,Friends
 # Create your models here.
 class Post(models.Model):
 	text = models.CharField(max_length=300)
