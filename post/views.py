@@ -41,10 +41,18 @@ def reply(request):
 	u.save()
 	return redirect('/wall/')
 def freqapt(request):
-	sender=request.POST['receiver']
+	sender=request.POST['sender']
 	receiver = User.objects.get(emailId=str(request.session['email']))
 	friend=True
-	u=Friends(sender=sender,receiver=receiver,friend=friend)
-	u.save()
+	#U needs to be found First ,me Have to read query
+	#u=Friends(sender=sender,receiver=receiver,friend=friend)
+	#u.save()
+	return redirect('/wall/')
+def freq(request):
+	sender = User.objects.get(emailId=str(request.session['email']))
+	receiver=request.POST['receiver']
+	friend=False
+	#u=Friends(sender=sender,receiver=receiver,friend=friend)
+	#u.save()
 	return redirect('/wall/')
 
