@@ -101,9 +101,9 @@ margin-right: auto;
 <div ng-app="myApp" >
 {% load static %}
 <ul class="topnav">
-  <li ><a href="/wall/profile/{{user.emailId}}">
+  <li ><a href="/wall/profile/{{user1.emailId}}">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <span> Hi! {{user.firstName}}</span>
+    <span> Hi! {{user1.firstName}}</span>
   </a></li>
 
   <li><a  href="/wall/"> 
@@ -142,6 +142,7 @@ margin-right: auto;
 
 <div class="col-lg-6 col-sm-8 col-xs-12">
 {% if posts %}
+  <h3>Posts</h3>
   {% for p in posts %}
 <div><!--ng-repeat starts-->
 
@@ -158,9 +159,13 @@ margin-right: auto;
           {% endif %}
           {% if p.replies %}
             <div ng-show="comment">    
+            <p>Comments:</p>
+            <ul>
             {% for r in p.replies %}
-              <p class="replies">{{r.text}} -<small ><a href="/wall/profile/{{r.user.emailId}}"> {{r.user.firstName}}</a></small></p>
+              <li><p class="replies">{{r.text}} -<small ><a href="/wall/profile/{{r.user.emailId}}"> {{r.user.firstName}}</a></small></p>
+              </li>
             {% endfor %}
+            </ul>
             </div>
           {% endif %}
       </div>

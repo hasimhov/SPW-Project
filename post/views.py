@@ -5,7 +5,10 @@ from django.shortcuts import render,redirect
 from .models import Post,Reply,User,Friends
 # Create your views here.
 def wall(request):
-	user = User.objects.get(emailId=str(request.session['email']))
+	try:
+		user = User.objects.get(emailId=str(request.session['email']))
+	except:
+		return redirect('/login/signup')
 	postsrep = []
 	frreq = user.receiver.all().filter(friend=False)
 	frnds1 = user.receiver.all().filter(friend=True)
@@ -85,6 +88,7 @@ def allusers(request):
 
 
 def profile(request,emailId):
+	user1=User.objects.get(emailId=request.session['email'])
 	user = User.objects.get(emailId=emailId)
 	posts=user.post_set.all()
 	postsrep=[]
@@ -94,6 +98,7 @@ def profile(request,emailId):
 	for i in range(len(posts)):
 			postsrep.append({'post':posts[i],'replies':posts[i].reply_set.all()})
 	context = {
+		'user1':user1,
 		'user':user,
 		'posts':postsrep,
 		'email':email,

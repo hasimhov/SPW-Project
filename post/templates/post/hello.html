@@ -141,6 +141,8 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
       <!-- For Ends -->
     {% endfor %}
   </ul>
+{% else %}
+  <p>You have no friends. Please go to All Users and add your friends</p>
 {% endif %}
 </div>
 <div class="card" style="width: 100% ;padding: 5px;" >
@@ -159,6 +161,8 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
   {% endfor %}
   <!-- For Ends -->
   </ul>
+{% else %}
+  <p>No pending requests</p>
 {% endif %}
 </div>
 <!-- <div class="card" style="width: 100% ;padding: 5px;" >
@@ -198,9 +202,14 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
           </form>
           {% if p.replies %}
             <div ng-show="comment">    
+            <p>Comments: </p>
+            <ul>
             {% for r in p.replies %}
+              <li>
               <p class="replies">{{r.text}} -<small > <a href="/wall/profile/{{r.user.emailId}}">{{r.user.firstName}}</a></small></p>
+              </li>
             {% endfor %}
+            </ul>
             </div>
           {% endif %}
       </div>
