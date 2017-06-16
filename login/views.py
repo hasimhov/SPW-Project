@@ -5,8 +5,11 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import User
 # Create your views here.
+context={
+	'error':''
+}
 def signUpHandler(request):
-	return render(request,'Signup.html',{})
+	return render(request,'Signup.html',context)
 
 def loginHandler(request):
 	email = request.POST['username']
@@ -19,18 +22,21 @@ def loginHandler(request):
 		user1 = User.objects.get(emailId=str(email))
 
 	except:
-		return redirect("/login/signup")
+		context['error']='EmailId does not exist'
+		return redirect('/login/signup')
 	if user1.password!=passwd:
-		return redirect("/login/signup")
-	print " password correct"
+		context['error']='Incorrect Password'
+		return redirect('/login/signup')
+	context['error']=''
 	request.session['email']=email
 	return redirect("/wall/")
 
 def login(request):
-	t=loader.get_template('index.html')
-	# email=request.session['email']
-	# email=""
-	return HttpResponse(t.render({},request))
+	try:
+		email=request.session['email']
+		return redirect('/wall/')
+	except:
+		return redirect('/login/signup')
 
 def check(request):
 

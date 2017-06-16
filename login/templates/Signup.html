@@ -22,7 +22,7 @@
         <form class="navbar-form navbar-right" role="search" action='../check1/' method='post'>
           {% csrf_token %}
           <div class="form-group">
-            <span id="mypass1" style="color: red"></span>
+            <span id="mypass1" style="color: red">{{error}}</span>
             <span id="mail1" style="color: red"></span>
               <input type="email" id ='mail' class="form-control" name="username" placeholder="Username">
           </div>

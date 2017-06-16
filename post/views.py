@@ -105,12 +105,12 @@ def profile(request,emailId):
 		'name':name,
 	}
 	return render(request,'post/wall.html',context)
-
+context={
+	'error':'',
+}
 def settings(request):
 	user = User.objects.get(emailId=str(request.session['email']))
-	context={
-		'user':user
-	}
+	context.update({'user':user})
 	return render(request,'post/settings.html',context)
 def logout(request):
 	del request.session['email']
@@ -128,6 +128,8 @@ def checker(request):
 			user.password=password
 		user.phoneNumber=phoneNum
 		user.save()
+		context['error']=''
 		return redirect('/wall/')
 	else:
-		return render(request,'post/error.html')
+		context['error']='Incorrect password'
+		return redirect('/wall/settings/')
