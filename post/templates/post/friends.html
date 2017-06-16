@@ -65,29 +65,26 @@ background: linear-gradient(to bottom, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, 
 <div ng-app="myApp" >
 
 <ul class="topnav">
-  <li class="right"><a href="#">
+  <li ><a class="active" href="/wall/profile/{{user.emailId}}">
     <i class="fa fa-user" aria-hidden="true"></i>
-    <span> Hi! {{name}}</span>
+    <span> Hi! {{user.firstName}}</span>
   </a></li>
 
-  <li><a  href="#Wall"> 
+  <li><a href="/wall/"> 
       <i class="fa fa-bars" aria-hidden="true"></i>
       <span class="hidden-xs"> Wall</span>
   </a></li>
-
-  <li><a class="active" href="#Friends">
-      <span class="fa fa-user-plus" aria-hidden="true"></span>
-      <span class="hidden-xs" > Friends</span>
+  <li class="right"><a href="/wall/logout">
+      <span class="fa fa-sign-out" aria-hidden="true"></span>
+      <span class="hidden-xs" > LogOut</span>
   </a></li>
 
-  <li><a href="#All_Friends">
-      <i class="fa fa-users" aria-hidden="true"></i>
-      <span class="hidden-xs" >  All Friends</span>
-  </a></li>
-    <li class="right"><a href="#Settings">
-      <i class="fa fa-cogs" aria-hidden="true"></i>
+  <li class="right"><a href="/wall/settings/">
+      <i class="fa fa-cog fa-spin fa-fw" aria-hidden="true"></i>
       <span class="hidden-xs" >  Settings</span>
   </a></li>
+ <input type="text" name="username" style="margin-top: 5px;" placeholder="User Mail Id -not working">
+
   <!-- <li class="right"><a href="#about">About</a></li> -->
 </ul>
 <!-- Accepting Requests -->
