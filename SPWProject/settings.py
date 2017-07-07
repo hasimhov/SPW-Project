@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 STATIC_URL = '/'
-
+MEDIA_ROOT = ''
+MEDIA_URL ='/'
 # Application definition
 
 INSTALLED_APPS = [

@@ -152,6 +152,7 @@ margin-right: auto;
     <!-- <img src="{% static 'post/images/user.png' %}" style="width:100%" alt="InterNet Error" ng-click="comment=false;"> -->
     <div class="container" style="width: 100%;">
           <!-- Fill with post Details in post class items -->
+          <img src="{% static 'post/postimages/spw.png' %}" style="width:100%">
           <p ng-click="comment=false;" class="post" >{{p.post.text}}</p>
           <!-- <i class="fa fa-reply" aria-hidden="true" ng-hide="reply || comment" style="position: absolute; right:8px;bottom: 30px;" ng-click="reply=!reply;"></i> -->
           {% if p.replies %}

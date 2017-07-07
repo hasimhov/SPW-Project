@@ -6,7 +6,7 @@ from login.models import User,Friends
 class Post(models.Model):
 	text = models.CharField(max_length=300)
 	user = models.ForeignKey(User)
-	image = models.ImageField(blank=True)
+	image = models.ImageField(blank=True,upload_to="post/static/post/postimages")
 	def __str__(self):
 		return self.text
 

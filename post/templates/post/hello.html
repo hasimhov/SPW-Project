@@ -115,7 +115,7 @@ background: linear-gradient(to bottom, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, 
 <div class="col-lg-3 col-sm-4 col-xs-12 rightpart" ng-controller="myCtrl" flex>
   <div></div>
   <div class="addpost card" ><div style="margin: auto;width: 50%;color: purple;">NEW POST</div>
-  <form class="form-group" style="padding: 10px;" action="/wall/posts/" method="post">
+  <form class="form-group" style="padding: 10px;" action="/wall/posts/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <textarea class="form-control" rows="5" id="comment" name="posts" placeholder="Post Here" ></textarea>
     <input type="file" name="pic" accept="image/*" style="margin-top: 10px;">

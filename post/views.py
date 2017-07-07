@@ -3,6 +3,9 @@ from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from .models import Post,Reply,User,Friends
+import tempfile
+import shutil
+
 # Create your views here.
 def wall(request):
 	try:
@@ -36,11 +39,17 @@ def wall(request):
 	}
 	return render(request,'post/hello.html',context)
 def post(request):
+	# MyPostForm = PostForm(request.POST, request.FILES)
+	# text = MyPostForm.cleaned_data["posts"]
+	# picture = MyPostForm.cleaned_data["pic"]
 	text=request.POST['posts']
+	# pic=request.FILES['pic']
 	user = User.objects.get(emailId=str(request.session['email']))
+	# image=request.FILES['pic']
 	u=Post(text=text,user=user)
 	u.save()
 	return redirect('/wall/')
+
 def reply(request):
 	text = request.POST['comment']
 	user = User.objects.get(emailId=str(request.session['email']))
@@ -83,14 +92,12 @@ def allusers(request):
 	}
 	return render(request,'post/friends.html',context)
 				
-
-				
-
-
 def profile(request,emailId):
 	user1=User.objects.get(emailId=request.session['email'])
 	user = User.objects.get(emailId=emailId)
 	posts=user.post_set.all()
+	# for i in range(len(posts)):
+	# 	posts[i].image.url = posts[i].image.url
 	postsrep=[]
 	cuser = User.objects.get(emailId=str(request.session['email']))
 	name=cuser.firstName
@@ -105,6 +112,7 @@ def profile(request,emailId):
 		'name':name,
 	}
 	return render(request,'post/wall.html',context)
+
 context={
 	'error':'',
 }
